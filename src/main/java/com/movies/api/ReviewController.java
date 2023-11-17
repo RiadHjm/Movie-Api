@@ -1,6 +1,7 @@
 package com.movies.api;
 
 import org.apache.coyote.Response;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,4 +25,9 @@ public class ReviewController {
         return new ResponseEntity<Review>(reviewService.createReview(payload.get("reviewBody"), payload.get("imdbId")), HttpStatus.CREATED); //in a JSON file input the values of the reviewBody and imdbId then use the POST method
 
     }
+
+    public record MovieReview(
+            ObjectId imdbId
+
+    ){}
 }
